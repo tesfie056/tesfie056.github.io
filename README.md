@@ -36,7 +36,7 @@ git push origin main
 
 ## Add screenshots later
 
-The SAI and SafeBridge cards use labeled placeholders because product screenshots are not in this repository yet.
+GERE PRODUCTION already uses a homepage screenshot at `assets/gere-production.jpg`. The SAI and SafeBridge cards use labeled placeholders because product screenshots are not in this repository yet.
 
 1. Put an image you have the right to publish in `assets/`, for example `assets/sai.png`.
 2. In `index.html`, replace that project's placeholder figure with an `img` element. Use a relative path such as `assets/sai.png` and an `alt` description of what the image shows.
@@ -44,3 +44,5 @@ The SAI and SafeBridge cards use labeled placeholders because product screenshot
 4. Commit and push to `main`.
 
 Use the same steps for SafeBridge or any of the iOS apps.
+
+GERE PRODUCTION lists “Technologies: To be confirmed.” Replace that line in `index.html` after the tools used on that site are confirmed. Do not add a technology until it is confirmed.

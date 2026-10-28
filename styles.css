@@ -592,6 +592,19 @@ h3 { line-height: 1.25; }
   justify-content: center;
 }
 
+.project-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid #2c4158;
+}
+
+.tech-pending {
+  margin-top: 0.95rem;
+  color: var(--muted);
+}
+
 .mock {
   display: flex;
   min-height: 240px;
