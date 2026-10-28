@@ -73,3 +73,59 @@ if (sections.length && links.length) {
   markCurrent();
   window.addEventListener('scroll', markCurrent, { passive: true });
 }
+
+const shotDialog = document.getElementById('shot-dialog');
+const shotDialogImg = document.getElementById('shot-dialog-img');
+const shotDialogCaption = document.getElementById('shot-dialog-caption');
+const shotDialogClose = document.getElementById('shot-dialog-close');
+
+if (shotDialog && shotDialogImg && shotDialogCaption) {
+  const shotButtons = [...document.querySelectorAll('.shot-open')];
+  let shotIndex = 0;
+
+  function showShot(index) {
+    if (!shotButtons.length) return;
+    shotIndex = (index + shotButtons.length) % shotButtons.length;
+    const button = shotButtons[shotIndex];
+    const image = button.querySelector('img');
+    const caption = button.closest('figure').querySelector('figcaption');
+    if (!image) return;
+    shotDialogImg.src = image.currentSrc || image.src;
+    shotDialogImg.alt = image.alt;
+    shotDialogImg.classList.toggle('is-portrait', button.getAttribute('data-orientation') === 'portrait');
+    shotDialogCaption.textContent = caption ? caption.textContent : image.alt;
+    if (!shotDialog.open) shotDialog.showModal();
+    if (shotDialogClose) shotDialogClose.focus();
+  }
+
+  shotButtons.forEach((button, index) => {
+    button.addEventListener('click', () => showShot(index));
+  });
+
+  if (shotDialogClose) {
+    shotDialogClose.addEventListener('click', () => shotDialog.close());
+  }
+
+  shotDialog.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      showShot(shotIndex + 1);
+    } else if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      showShot(shotIndex - 1);
+    }
+  });
+
+  shotDialog.addEventListener('click', (event) => {
+    const bounds = shotDialog.getBoundingClientRect();
+    const inside = event.clientX >= bounds.left && event.clientX <= bounds.right
+      && event.clientY >= bounds.top && event.clientY <= bounds.bottom;
+    if (!inside) shotDialog.close();
+  });
+
+  shotDialog.addEventListener('close', () => {
+    shotDialogImg.removeAttribute('src');
+    const opener = shotButtons[shotIndex];
+    if (opener) opener.focus();
+  });
+}

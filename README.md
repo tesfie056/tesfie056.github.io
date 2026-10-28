@@ -36,7 +36,7 @@ git push origin main
 
 ## Add screenshots later
 
-GERE PRODUCTION already uses a homepage screenshot at `assets/gere-production.jpg`. The SAI and SafeBridge cards use labeled placeholders because product screenshots are not in this repository yet.
+GERE PRODUCTION already uses a homepage screenshot at `assets/gere-production.jpg`. SAI still uses a labeled placeholder. SafeBridge Transit uses screenshots in `assets/safebridge/`. Review those images for personal information before publishing them.
 
 1. Put an image you have the right to publish in `assets/`, for example `assets/sai.png`.
 2. In `index.html`, replace that project's placeholder figure with an `img` element. Use a relative path such as `assets/sai.png` and an `alt` description of what the image shows.
